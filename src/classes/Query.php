@@ -4,7 +4,7 @@
 *
 * https://github.com/Apter-X/dataman
 *
-* This PHP class allow you to applied simple CRUD operations using Sql requests
+* This PHP class is a query constructor
 */
 Class Query extends Database 
 {
