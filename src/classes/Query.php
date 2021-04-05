@@ -1,10 +1,10 @@
 <?php
 /**
-* Dataman v1.0
+* dataman v1.0
 *
-* https://github.com/Apter-X/erebos
+* https://github.com/Apter-X/dataman
 *
-* This PHP class allow you to applied simple CRUD operations using MySql requests
+* This PHP class allow you to applied simple CRUD operations using Sql requests
 */
 Class Query extends Database 
 {
