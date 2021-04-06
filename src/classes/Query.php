@@ -8,9 +8,32 @@
 */
 Class Query extends Database 
 {
+    /**
+    * Select table
+    * @param string $table Target table
+    * @return array Return the target value
+    */
+    public function selectTable($table, $refKey = NULL, $refValue = NULL)
+    {
+        if(empty($refKey) && empty($refValue)){
+            $sql = <<<EOT
+                SELECT * FROM $table
+            EOT;
+        } else {
+            $sql = <<<EOT
+                SELECT * FROM $table WHERE $refKey='$refValue';
+            EOT;
+        }
+
+        $this->setFetchMode(PDO::FETCH_ASSOC);
+        $return = $this->fetch($sql);
+
+        return $return;
+    }
+
     /** Value **/
     /**
-    * Select a specific value giving the table and references
+    * Select a specific value
     * @param string $target Target key
     * @param string $table Target table
     * @param string $refKey Referential key
@@ -31,7 +54,7 @@ Class Query extends Database
     }
 
     /**
-    * Update a specific value giving the table and references
+    * Update a specific value
     * @param string $table Target table
     * @param string $key Target key
     * @param string $newValue
@@ -65,7 +88,7 @@ Class Query extends Database
         $this->setFetchMode(PDO::FETCH_ASSOC);
         $return = $this->fetch($sql);
 
-        return $return;
+        return $return[0];
     }
 
     /**
@@ -88,7 +111,7 @@ Class Query extends Database
     }
 
     /**
-    * Delete row table
+    * Delete row
     * @param string $table Target table
     * @param string $refKey Referential key
     * @param string|int $refValue Value of the referential key
@@ -105,7 +128,7 @@ Class Query extends Database
 
     /** Column **/
     /**
-    * Select column table
+    * Select column
     * @param string $column Target column
     * @param string $table Target table
     * @param string $refKey Referential key
@@ -132,26 +155,7 @@ Class Query extends Database
     }
 
     /**
-    * Delete column table
-    * @param string $table Target table
-    * @param string $column Target column
-    * @return requestSQL|PDOStatement Return the sql request constructor and the PDO statement
-    */
-    public function deleteColumn($table, $column)
-    {
-        if(empty($refKey) && empty($refValue)){
-            $sql = <<<EOT
-                ALTER TABLE $table
-                DROP COLUMN $column;
-            EOT;
-        }
-
-        $return = $this->execute($sql);
-        return $return;
-    }
-
-    /**
-    * Inner join values
+    * Inner join tables
     * @param string $targets Target keys (key1, key2)
     * @param string $table1 First table
     * @param string $refKey1 First table referential key
@@ -173,10 +177,4 @@ Class Query extends Database
 
         return $return;
     }
-
-    // Change type
-    // ALTER TABLE `records` CHANGE `civ` `civ` CHAR(11) NOT NULL;
-
-    // Change to default
-    // ALTER TABLE `records` CHANGE `progress` `progress` VARCHAR(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0'; 
 }
