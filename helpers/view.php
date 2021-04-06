@@ -15,7 +15,7 @@
 /**
  * Display table
  */
-function display_table($arr)
+function display_table($arr, $id = NULL, $route = NULL)
 {
     $i = 0;
     $count = count($arr);
@@ -40,7 +40,7 @@ function display_table($arr)
                         </td>
                     <?php endforeach; ?>
                     <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
-                        <a href='#'><?= "Edit" ?></a>
+                        <a href='<?= $route ?>?id=<?= $arr[$i][$id] ?>'><?= "Details" ?></a>
                     </td>
                 </tr>
             <?php $i++; endwhile; ?>
@@ -49,6 +49,42 @@ function display_table($arr)
 </div>
 <?php
 }
+
+/**
+ * Display table
+ */
+ function display_row($arr, $id = NULL, $route = NULL)
+ {
+     $i = 0;
+     $count = count($arr);
+     
+ ?>
+ <div>
+     <table style='border: 1px solid black; border-collapse: collapse;'>
+         <thead>
+             <tr>
+                 <?php foreach($arr as $key => $value) : ?>
+                     <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?=  $key ?></th>
+                 <?php endforeach;?>
+                    <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?= "Action" ?></th>
+             </tr>
+         </thead>
+         <tbody>
+                 <tr>
+                     <?php foreach ($arr as $key => $value) : ?>
+                         <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
+                             <p><?= $value ?></p>
+                         </td>
+                     <?php endforeach; ?>
+                     <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
+                        <a href='<?= $route ?>?id=<?= $arr[$id] ?>'><?= "Details" ?></a>
+                     </td>
+                 </tr>
+         </tbody>
+     </table>
+ </div>
+ <?php
+ }
 
 /**
 * Print warning
