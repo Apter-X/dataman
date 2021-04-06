@@ -34,7 +34,7 @@ function getUserLanguage(){
 
     if(isset($_GET['lang']) && !empty($_GET['lang'])){
 
-       $lang = str_secur(strtolower($_GET['lang']));
+       $lang = str_secure(strtolower($_GET['lang']));
        $available = ['en','fr'];
 
        return (in_array($lang,$available)) ? $lang : DEFAULT_LANGUAGE;
