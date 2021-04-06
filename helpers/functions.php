@@ -43,7 +43,7 @@ function formatDate($date)
  *
  * @return void
  */
-function getUserlanguage(){
+function getUserLanguage(){
 
     if(isset($_GET['lang']) && !empty($_GET['lang'])){
 
