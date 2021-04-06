@@ -1,5 +1,18 @@
 <?php
 /**
+ * formated debug
+ *
+ * @param [type] $var
+ * @return void
+ */
+ function debug($var){
+
+    echo '<pre>';
+        var_dump($var);
+    echo '</pre>';
+}
+
+/**
  * Display table
  */
 function display_table($array)
@@ -31,15 +44,15 @@ function display_table($array)
 }
 
 /**
- * Print warning
- */
- function alert($string, $color = 'light-grey', $top = 0)
- {
-     $message = <<<EOT
-         <div class="w3-panel w3-card w3-$color w3-animate-top alert-depop" style="position:absolute;width:100%;margin-top: $top;">
-             <p style="text-align:center;">$string</p>
-         </div>
-     EOT;
- 
-     echo $message;
- }
+* Print warning
+*/
+function alert($string, $color = 'light-grey', $top = 0)
+{
+    $message = <<<EOT
+        <div class="w3-panel w3-card w3-$color w3-animate-top alert-depop" style="position:absolute;width:100%;margin-top: $top;">
+            <p style="text-align:center;">$string</p>
+        </div>
+    EOT;
+
+    echo $message;
+}

@@ -11,19 +11,6 @@ function str_secure($string){
     return trim(htmlspecialchars($string));
 }
 
-/**
- * formated debug
- *
- * @param [type] $var
- * @return void
- */
-function debug($var){
-
-    echo '<pre>';
-        var_dump($var);
-    echo '</pre>';
-}
-
 
 /**
  *  function formattage de la date
