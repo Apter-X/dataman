@@ -9,6 +9,7 @@
 class Database 
 {
   private $db;
+  public $rows;
 
   public function __construct()
   {
@@ -31,7 +32,7 @@ class Database
   private function exec($request, $values = null)
   {
       $req = $this->db->prepare($request);
-      $req->execute($values);
+      $this->rows = $req->execute($values);
       return $req;
   }
 

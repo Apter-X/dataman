@@ -8,5 +8,6 @@
 */
 class Dataman extends Verifier
 {
+    use View;
     
 }

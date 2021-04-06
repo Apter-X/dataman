@@ -1,13 +1,14 @@
 <?php
+/**
+* dataman v1.0
+*
+* https://github.com/Apter-X/dataman
+*
+* Where all the data flow passes.
+*/
 class Verifier extends Account
 {
-    /**
-    * Securisation d'une chaine de caractere
-    * @param [type] $string
-    * @return string
-    */
-    private function str_secure($string){
+    use Format;
 
-        return trim(htmlspecialchars($string));
-    }
+
 }

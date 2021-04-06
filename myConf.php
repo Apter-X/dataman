@@ -2,6 +2,13 @@
 //set error handler
 // set_error_handler("customError");
 
+/** traits **/
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__.'\dataman\traits\Format.php');
+require_once(__ROOT__.'\dataman\traits\View.php');
+/** classes **/
+require_once(__ROOT__.'\dataman\classes\Autoloader.php');
+
 /** Database/__constructor **/
 define("DB_HOST", "localhost");
 define("DB_NAME", "data_manager");
@@ -25,3 +32,4 @@ define('SUCCESS_COLOR', '#00cc66');
 define('DANGER_COLOR', '#c93f38');
 define('POLICE_PRIMARY', 'Verdana, sans-serif');
 
+Autoloader::load();
