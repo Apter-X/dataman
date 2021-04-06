@@ -16,7 +16,7 @@ class Account extends Query
     */
     public function login($username, $password)
     {
-        $query_password = $db->selectValue('password', 'users', 'username', $username);
+        $query_password = $this->db->selectValue('password', 'users', 'username', $username);
 
         if( $password == $query_password )
         {
@@ -33,11 +33,11 @@ class Account extends Query
     */
     public function register($newUser)
     {
-        $query_users = $db->selectColumn('username', 'users');
-        $query_emails = $db->selectColumn('email', 'users');
+        $query_users = $this->db->selectColumn(USERNAME, USER_TABLE);
+        $query_emails = $this->db->selectColumn(EMAIL, USER_TABLE);
 
-        $search_user = array_search($newUser['username'], $query_users);
-        $search_email = array_search($newUser['email'], $query_emails);
+        $search_user = array_search($newUser[USERNAME], $query_users);
+        $search_email = array_search($newUser[EMAIL], $query_emails);
 
         if(is_int($search_user))
         {
@@ -49,7 +49,7 @@ class Account extends Query
         } 
         else 
         {
-            $db->insertRow('users', ':username, :email, :password', $newUser);
+            $this->db->insertRow('users', ':username, :email, :password', $newUser);
             return true;
         }
     }
