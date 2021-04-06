@@ -46,7 +46,7 @@ Class Query extends Database
         EOT;
 
         $return = $this->execute($sql);
-        return $sql . " | " . $return;
+        return $return;
     }
 
     /** Row **/
@@ -84,7 +84,7 @@ Class Query extends Database
         EOT;
 
         $return = $this->execute($sql, $values);
-        return $sql . " | " . $return;
+        return $return;
     }
 
     /**
@@ -100,7 +100,7 @@ Class Query extends Database
         EOT;
 
         $return = $this->execute($sql);
-        return $sql . " | " . $return;
+        return $return;
     }
 
     /** Column **/
@@ -147,7 +147,7 @@ Class Query extends Database
         }
 
         $return = $this->execute($sql);
-        return $sql . " | " . $return;
+        return $return;
     }
 
     /**
