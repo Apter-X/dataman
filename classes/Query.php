@@ -4,9 +4,9 @@
 *
 * https://github.com/Apter-X/dataman
 *
-* This PHP class is a query constructor
+* This PHP class construct and execute query.
 */
-Class Query extends Database 
+Class Query extends Builder 
 {
     /**
     * Select table
@@ -60,7 +60,7 @@ Class Query extends Database
     * @param string $newValue
     * @param string $refKey Referential key
     * @param string|int $refValue Value of the referential key
-    * @return requestSQL|PDOStatement Return the sql request constructor and the PDO statement
+    * @return PDOStatement Return the PDO statement
     */
     public function updateValue($table, $key, $newValue, $refKey, $refValue)
     {
@@ -96,7 +96,7 @@ Class Query extends Database
     * @param string $table Target table
     * @param string $targets Referential keys (:key1, :key2)
     * @param object $values Row values
-    * @return requestSQL|PDOStatement Return the sql request constructor and the PDO statement
+    * @return PDOStatement Return the PDO statement
     */
     public function insertRow($table, $targets, $values)
     {
@@ -115,7 +115,7 @@ Class Query extends Database
     * @param string $table Target table
     * @param string $refKey Referential key
     * @param string|int $refValue Value of the referential key
-    * @return requestSQL|PDOStatement Return the sql request constructor and the PDO statement
+    * @return PDOStatement Return the PDO statement
     */
     public function deleteRow($table, $refKey, $refValue){
         $sql = <<<EOT
@@ -161,7 +161,7 @@ Class Query extends Database
     * @param string $refKey1 First table referential key
     * @param string $refValue  Value of the referential key
     * @param string $refValue Value of the referential key
-    * @return array Return the fetched column
+    * @return array Return the fetched columns
     */
     public function innerJoin($targets, $table1, $refKey1, $table2, $refKey2)
     {

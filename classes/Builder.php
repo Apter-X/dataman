@@ -4,15 +4,10 @@
 *
 * https://github.com/Apter-X/dataman
 *
-* This PHP class is a database builder
+* This PHP class allows you to build your database.
 */
-class Builder extends Query
+class Builder extends Database
 {
-    public function ping()
-    {
-        return "Pong!";
-    }
-
     /**
     * Insert column
     * @param string $table Target table

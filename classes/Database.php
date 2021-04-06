@@ -4,12 +4,11 @@
 *
 * https://github.com/Apter-X/dataman
 *
-* This PHP class allows you to simplify SQL requests (with PDO)
+* This PHP class allows you to simplify SQL requests (with PDO).
 */
 class Database 
 {
   private $db;
-  private $rows;
 
   public function __construct()
   {

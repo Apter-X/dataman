@@ -109,3 +109,9 @@ function alert($string, $color = PRIMARY_COLOR)
 
     echo $message;
 }
+
+//error handler function
+function customError($errno, $errstr) {
+    echo "<b>Error:</b> [$errno] $errstr";
+    die();
+}
