@@ -1,12 +1,12 @@
 <?php
 /**
- * formated debug
+ * Formate debug
  *
  * @param [type] $var
  * @return void
  */
- function debug($var){
-
+ function debug($var)
+ {
     echo '<pre>';
         var_dump($var);
     echo '</pre>';
@@ -15,28 +15,35 @@
 /**
  * Display table
  */
-function display_table($array)
+function display_table($arr)
 {
+    $i = 0;
+    $count = count($arr);
+    
 ?>
 <div>
-    <table>
+    <table style='border: 1px solid black; border-collapse: collapse;'>
         <thead>
             <tr>
-                <?php foreach($array as $key) : ?>
-                    <th><?= $key ?></th> <!-- Keys -->
+                <?php foreach($arr[0] as $key => $value) : ?>
+                    <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?=  $key ?></th>
                 <?php endforeach;?>
+                   <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?= "Action" ?></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <?php foreach ($array as $key => $value) : ?>
-                    <td>
-                        <ul>
-                            <li><?= $value ?></li> <!-- Values -->
-                        </ul>
+            <?php while ($i < $count) : ?>
+                <tr>
+                    <?php foreach ($arr[$i] as $key => $value) : ?>
+                        <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
+                            <p><?= $value ?></p>
+                        </td>
+                    <?php endforeach; ?>
+                    <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
+                        <a href='#'><?= "Edit" ?></a>
                     </td>
-                <?php endforeach; ?>
-            </tr>
+                </tr>
+            <?php $i++; endwhile; ?>
         </tbody>
     </table>
 </div>
