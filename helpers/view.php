@@ -40,7 +40,7 @@ function display_table($arr, $keyId, $route = NULL)
                             </td>
                         <?php endforeach; ?>
                         <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
-                            <a href='<?= $route ?>?id=<?= $arr[$i][$$keyId] ?>'><?= "Details" ?></a>
+                            <a href='<?= $route ?>?id=<?= $arr[$i][$keyId] ?>'><?= "Details" ?></a>
                         </td>
                     </tr>
                 <?php $i++; endwhile; ?>
