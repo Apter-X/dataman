@@ -35,7 +35,5 @@ Output:
 |---|--------|--------|
 | 3 | bishop | 1      |
 
-***
-
 ## License
 Under **GNU General Public License v3.0**.
