@@ -3,24 +3,37 @@ Dataman is a simple object database manager using PDO that simplifies back-end p
 
 ## Instructions
 + Go to the root of your php project and `git clone https://github.com/Apter-X/dataman.git`.
-+ Include the file `./dataman/myConfig.php` to your project.
-+ instantiate Dataman like this ```php $dataman = new Dataman;```.
-+ Done! You can start using methods of `$dataman`.
++ Configure your connection with your database in the file `./database/myConfig`.
++ Done!.
 
-## Features
-+ Select Value
-+ Update Value
+## How to use
+We need to instantiate our dataman like this :
 
-+ Select Row
-+ Insert Row
-+ Delete Row
+```php
+  include_one './dataman/myConfig.php';
+  $dataman = new Dataman;
+  $dataman->ping();
+```
 
-+ Select Column
-+ Insert Column
-+ Delete Column
+## Example
+Let's pretend that this table represents our database.
+**users**
+|id |username|is_admin|
+|---|--------|--------|
+| 1 | steave | 0      |
+| 2 | pyck   | 0      |
+| 3 | bishop | 1      |
 
-+ Display Table
-+ Display Row
+With this method we can get a specific row by passing certain references as parameters  :
+```php
+  $data = $dataman->selectRow('users', 'id', '3');
+  $dataman->displayRow($data);
+```
+
+Output:
+|id |username|is_admin|
+|---|--------|--------|
+| 3 | bishop | 1      |
 
 ***
 
