@@ -9,5 +9,9 @@
 class Dataman extends Verifier
 {
     use View;
-    
+
+    public function ping()
+    {
+        $this->alert("Pong", SUCCESS_COLOR);
+    }
 }
