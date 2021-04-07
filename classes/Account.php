@@ -32,8 +32,8 @@ class Account extends Query
         $query_users = $this->db->selectColumn(USERNAME_KEY, USERS_TABLE);
         $query_emails = $this->db->selectColumn(EMAIL_KEY, USERS_TABLE);
 
-        $search_user = array_search($newUser[USERNAME], $query_users);
-        $search_email = array_search($newUser[EMAIL], $query_emails);
+        $search_user = array_search($newUser[USERNAME_KEY], $query_users);
+        $search_email = array_search($newUser[EMAIL_KEY], $query_emails);
 
         if(is_int($search_user))
         {
