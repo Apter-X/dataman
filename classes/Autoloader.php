@@ -2,7 +2,7 @@
 class Autoloader
 {
     /**
-    * Load Dataman requirements.
+    * Load classes.
     *
     * @return void
     */

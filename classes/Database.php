@@ -1,9 +1,5 @@
 <?php
 /**
-* dataman v1.0
-*
-* https://github.com/Apter-X/dataman
-*
 * This PHP class allows you to simplify SQL requests (with PDO).
 */
 class Database 

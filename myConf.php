@@ -2,11 +2,10 @@
 //set error handler
 // set_error_handler("customError");
 
-/** traits **/
+/** traits/classes **/
 define('__ROOT__', dirname(dirname(__FILE__)));
 require_once(__ROOT__.'\dataman\traits\Format.php');
 require_once(__ROOT__.'\dataman\traits\View.php');
-/** classes **/
 require_once(__ROOT__.'\dataman\classes\Autoloader.php');
 
 /** Database/__constructor **/
@@ -14,9 +13,6 @@ define("DB_HOST", "localhost");
 define("DB_NAME", "data_manager");
 define("DB_USER", "root");
 define("DB_PASS", "");
-
-/** helpers/functions **/
-define("DEFAULT_LANGUAGE", "");
 
 /** Account/register **/
 define('USERS_TABLE', '');

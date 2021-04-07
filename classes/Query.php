@@ -1,9 +1,5 @@
 <?php
 /**
-* dataman v1.0
-*
-* https://github.com/Apter-X/dataman
-*
 * This PHP class construct and execute query.
 */
 Class Query extends Builder 

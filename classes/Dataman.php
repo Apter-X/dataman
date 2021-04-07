@@ -4,7 +4,7 @@
 *
 * https://github.com/Apter-X/dataman
 *
-* This PHP class contains all the legacy.
+* Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.
 */
 class Dataman extends Verifier
 {
