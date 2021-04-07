@@ -15,7 +15,7 @@ We need to instantiate our dataman like this :
 ```
 
 ## Example
-Let's pretend that this table represents our database.
+Let's pretend that this table represents our datatable.
 
 **users**
 |id |username|is_admin|
@@ -37,7 +37,7 @@ Output:
 With this method we can get a specific value :
 ```php
   $data = $dataman->selectValue('users', 'is_admin','username', 'beshop');
-  $dataman->displayRow($data);
+  echo $data;
 ```
 Output: `1`
 
