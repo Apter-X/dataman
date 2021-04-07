@@ -16,6 +16,7 @@ We need to instantiate our dataman like this :
 
 ## Example
 Let's pretend that this table represents our database.
+
 **users**
 |id |username|is_admin|
 |---|--------|--------|
