@@ -3,7 +3,7 @@ Dataman is a simple database manager using PDO that simplifies back-end processi
 
 ## Instructions
 + Go to the root of your php project and `git clone https://github.com/Apter-X/dataman.git`.
-+ Configure your connection with your database here `./database/myConfig`.
++ Configure the connection with your database here `./database/myConfig`.
 
 ## How to use
 
