@@ -35,10 +35,10 @@ Output:
 ***
 With this method we can get a specific value in a table as a string :
 ```php
-  $data = $dataman->selectValue('users', 'is_admin','username', 'beshop');
+  $data = $dataman->selectValue('users', 'username','is_admin', '1');
   echo $data;
 ```
-Output: `1`
+Output: `bishop`
 
 ***
 ### License
