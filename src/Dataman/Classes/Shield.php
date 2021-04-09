@@ -2,9 +2,9 @@
 /**
 * Where all the data flow passes.
 */
-class Verifier extends Account
+class Shield extends Account
 {
-    use Format;
+    // use Format;
 
 
 }

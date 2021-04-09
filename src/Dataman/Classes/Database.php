@@ -27,9 +27,9 @@ class Database
   */
   private function exec($request, $values = null)
   {
-      $req = $this->db->prepare($request);
-      $this->rows = $req->execute($values);
-      return $req;
+    $req = $this->db->prepare($request);
+    $this->rows = $req->execute($values);
+    return $req;
   }
 
   /**

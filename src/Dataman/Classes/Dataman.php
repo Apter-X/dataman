@@ -8,8 +8,11 @@
 */
 class Dataman extends Verifier
 {
-    use View;
+    // use View;
 
+    /**
+    * @return void 
+    */
     public function ping()
     {
         $this->alert("Pong", SUCCESS_COLOR);

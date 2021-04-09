@@ -10,7 +10,7 @@ class Builder extends Database
     * @param string $column Target column
     * @param string $type Data type
     * @param string $after Position
-    * @return requestSQL|PDOStatement Return the sql request constructor and the PDO statement
+    * @return PDOStatement Return the sql request constructor and the PDO statement
     */
     public function insertColumn($table, $column, $type, $after)
     {
@@ -26,7 +26,7 @@ class Builder extends Database
     * Delete column
     * @param string $table Target table
     * @param string $column Target column
-    * @return requestSQL|PDOStatement Return the sql request constructor and the PDO statement
+    * @return PDOStatement Return the sql request constructor and the PDO statement
     */
     public function deleteColumn($table, $column)
     {
