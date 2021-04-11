@@ -1,21 +1,20 @@
 # Dataman
-Dataman is a simple object database manager using PDO that simplifies back-end processing and grants with useful tools.
+Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.
 
 ## Instructions
 + Go to the root of your php project and `git clone https://github.com/Apter-X/dataman.git`.
-+ Configure your connection with your database in the file `./database/myConfig`.
++ Configure the connection with your database here `./database/myConfig`.
 
 ## How to use
-We need to instantiate our dataman like this :
 
 ```php
-  include_one './dataman/myConfig.php';
+  include_once './dataman/myConfig.php';
   $dataman = new Dataman;
   $dataman->ping();
 ```
 
 ## Example
-Let's pretend that this table represents our datatable.
+Let's pretend that table represents our datatable.
 
 **users**
 |id |username|is_admin|
@@ -24,7 +23,7 @@ Let's pretend that this table represents our datatable.
 | 2 | pyck   | 0      |
 | 3 | bishop | 1      |
 ***
-With this method we can get a specific row by passing certain references as parameters :
+With this method we can get a specific row in a table as an associative array :
 ```php
   $data = $dataman->selectRow('users', 'id', '3');
   $dataman->displayRow($data);
@@ -34,12 +33,12 @@ Output:
 |---|--------|--------|
 | 3 | bishop | 1      |
 ***
-With this method we can get a specific value :
+With this method we can get a specific value in a table as a string :
 ```php
-  $data = $dataman->selectValue('users', 'is_admin','username', 'beshop');
+  $data = $dataman->selectValue('users', 'username','is_admin', '1');
   echo $data;
 ```
-Output: `1`
+Output: `bishop`
 
 ***
 ### License
