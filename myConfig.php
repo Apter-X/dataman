@@ -10,7 +10,7 @@ require_once(__ROOT__.'\dataman\classes\Autoloader.php');
 
 /** Database/__constructor **/
 define("DB_HOST", "localhost");
-define("DB_NAME", "data_manager");
+define("DB_NAME", "gcm");
 define("DB_USER", "root");
 define("DB_PASS", "");
 
