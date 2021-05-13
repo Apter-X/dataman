@@ -2,12 +2,17 @@
 /**
 * Where all the data flow passes.
 */
-class Shield extends Query
+class Shield extends Time
 {
     use Format;
     use Toolbox;
 
     protected $pact;
+
+    protected function endPact()
+    {
+        
+    }
 
     protected function madePact($userId, $userRole)
     {

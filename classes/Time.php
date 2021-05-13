@@ -2,20 +2,20 @@
 /**
  * Calender functionalities
  */
-class Time extends Account
+class Time extends Query
 {
     public $days = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
     public $months = array('Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre');
     
     function getEvents($year){
-        global $DB;
-        $req = $DB->query('SELECT event_id,title,date FROM events WHERE YEAR(date)='.$year);
-        $r = array();
+        $this->setFetchMode(PDO::FETCH_OBJ);
+        $events = $this->fetch('SELECT event_id,title,date FROM events WHERE YEAR(date)='.$year);
+
         /*
          *  Ce que je veux $r[TIMESTAMP][id] = title;
          */
-        while ($d = $req->fetch(PDO::FETCH_OBJ)){
-            $r[strtotime($d->date)][$d->event_id] = $d->title;
+        foreach ($events as $e) {
+            $r[strtotime($e->date)][$e->event_id] = $e->title;
         }
         return $r;
     }

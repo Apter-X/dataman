@@ -6,7 +6,7 @@
 *
 * Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.
 */
-class Dataman extends Time
+class Dataman extends Account
 {
     use Asset;
     use View;

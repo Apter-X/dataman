@@ -6,8 +6,9 @@ class Database
 {
   private $db;
   public $rows;
+  public $fetchMode;
 
-  public function __construct()
+  public function __construct($fetchMode = PDO::FETCH_ASSOC)
   {
     try
     {
@@ -17,6 +18,8 @@ class Database
     {
       die('Error : ' . $event->getMessage());
     }
+
+    $this->setFetchMode($fetchMode);
 
     // to prevent against sql injection
     $this->db ->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

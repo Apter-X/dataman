@@ -21,7 +21,6 @@ Class Query extends Builder
             EOT;
         }
 
-        $this->setFetchMode(PDO::FETCH_ASSOC);
         $return = $this->fetch($sql);
 
         return $return;
@@ -42,7 +41,6 @@ Class Query extends Builder
             SELECT $target FROM $table WHERE $refKey='$refValue';
         EOT;
 
-        $this->setFetchMode(PDO::FETCH_ASSOC);
         $response = $this->fetch($sql);
 
         $return = implode(array_column($response, $target)); //extract the value from the associative array
@@ -81,7 +79,6 @@ Class Query extends Builder
             SELECT * FROM $table WHERE $refKey='$refValue';
         EOT;
 
-        $this->setFetchMode(PDO::FETCH_ASSOC);
         $return = $this->fetch($sql);
 
         return $return[0];
@@ -143,7 +140,6 @@ Class Query extends Builder
             EOT;
         }
 
-        $this->setFetchMode(PDO::FETCH_ASSOC);
         $fetch = $this->fetch($sql);
 
         $return = array_column($fetch, $column);
@@ -166,8 +162,6 @@ Class Query extends Builder
             FROM $table1
             INNER JOIN $table2 ON $table1.$refKey1 = $table2.$refKey2;
         EOT;
-
-        $this->setFetchMode(PDO::FETCH_ASSOC);
         
         $return = $this->fetch($sql);
 
