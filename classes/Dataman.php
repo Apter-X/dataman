@@ -6,12 +6,13 @@
 *
 * Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.
 */
-class Dataman extends Verifier
+class Dataman extends Time
 {
+    use Style;
     use View;
 
     public function ping()
     {
-        $this->alert("Pong", SUCCESS_COLOR);
+        $this->alert('Pong', SUCCESS_COLOR);
     }
 }

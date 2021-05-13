@@ -2,7 +2,7 @@
 /**
 * This PHP class manage account.
 */
-class Account extends Query
+class Account extends Shield
 {
     /**
     * Login
@@ -10,7 +10,7 @@ class Account extends Query
     * @param string $password Password
     * @return PDOStatement
     */
-    public function login($username, $password)
+    protected function login($username, $password)
     {
         $query_password = $this->db->selectValue(PASSWORD_KEY, USERS_TABLE, USERNAME_KEY, $username);
 
@@ -27,7 +27,7 @@ class Account extends Query
     * @param array $newUser Associative array
     * @return PDOStatement
     */
-    public function register($newUser)
+    protected function register($newUser)
     {
         $query_users = $this->db->selectColumn(USERNAME_KEY, USERS_TABLE);
         $query_emails = $this->db->selectColumn(EMAIL_KEY, USERS_TABLE);

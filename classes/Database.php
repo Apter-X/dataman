@@ -2,7 +2,7 @@
 /**
 * This PHP class allows you to simplify SQL requests (with PDO).
 */
-class Database 
+class Database
 {
   private $db;
   public $rows;
@@ -17,6 +17,10 @@ class Database
     {
       die('Error : ' . $event->getMessage());
     }
+
+    // to prevent against sql injection
+    $this->db ->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $this->db ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 
   /**
