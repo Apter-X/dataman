@@ -167,4 +167,30 @@ Class Query extends Builder
 
         return $return;
     }
+
+    /**
+    * Select Object or Multiple Objects where they got a Specified reference
+    * @param string $table Target table
+    * @return object Return the target object
+    */
+    public function selectObject($targets, $table, $refKey = NULL, $refValue = NULL)
+    {
+        $this->setFetchMode(PDO::FETCH_OBJ);
+
+        if(empty($refKey) && empty($refValue)){
+            $sql = <<<EOT
+                SELECT $targets FROM $table
+            EOT;
+        } else {
+            $sql = <<<EOT
+                SELECT $targets FROM $table WHERE $refKey='$refValue';
+            EOT;
+        }
+
+        $return = $this->fetch($sql);
+
+        // $this->setFetchMode($this->fetchMode);
+
+        return $return;
+    }
 }
