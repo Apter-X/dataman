@@ -24,34 +24,33 @@ trait View
     {
         $i = 0;
         $count = count($arr);
-        $police = POLICE_PRIMARY;
         ?>
-        <div style='font-family:<?= $police ?>'>
-            <table style='border: 1px solid black; border-collapse: collapse; font-family:<?= $police ?>; width: 100%'>
+            <table id="datatable" style="width: 100%">
                 <thead>
                     <tr>
                         <?php foreach($arr[0] as $key => $value) : ?>
-                            <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?=  $key ?></th>
+                            <th><?=  $key ?></th>
                         <?php endforeach;?>
-                        <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?= "Action" ?></th>
+                        <th><?= "Action" ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($i < $count) : ?>
                         <tr>
                             <?php foreach ($arr[$i] as $key => $value) : ?>
-                                <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
-                                    <p><?= $value ?></p>
+                                <td>
+                                    <div class="relative">
+                                        <div class="value"><?= $value ?></div>
+                                    </div>
                                 </td>
                             <?php endforeach; ?>
-                            <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
+                            <td>
                                 <a href='<?= $route ?>?id=<?= $arr[$i][$keyId] ?>'><?= "Details" ?></a>
                             </td>
                         </tr>
                     <?php $i++; endwhile; ?>
                 </tbody>
             </table>
-        </div>
         <?php
     }
 
@@ -60,33 +59,31 @@ trait View
     */
     public function displayRow($arr, $keyId = 'id', $route = NULL)
     {
-        $police = POLICE_PRIMARY;
-
         ?>
-        <div style='font-family:<?= $police ?>'>
-            <table style='border: 1px solid black; border-collapse: collapse; font-family:<?= $police ?>; width: 100%'>
+            <table id="datatable" style="width: 100%">
                 <thead>
                     <tr>
                         <?php foreach($arr as $key => $value) : ?>
-                            <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?=  $key ?></th>
+                            <th><?=  $key ?></th>
                         <?php endforeach;?>
-                            <th style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'><?= "Action" ?></th>
+                            <th><?= "Action" ?></th>
                     </tr>
                 </thead>
                 <tbody>
                         <tr>
                             <?php foreach ($arr as $key => $value) : ?>
-                                <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
-                                    <p><?= $value ?></p>
+                                <td>
+                                    <div class="relative">
+                                        <div class="value"><?= $value ?></div>
+                                    </div>
                                 </td>
                             <?php endforeach; ?>
-                            <td style='border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;'>
+                            <td>
                                 <a href='<?= $route ?>?id=<?= $arr[$keyId] ?>'><?= "Details" ?></a>
                             </td>
                         </tr>
                 </tbody>
             </table>
-        </div>
         <?php
     }
 
@@ -95,7 +92,6 @@ trait View
     */
     public function displayCalendar($dates, $date, $year)
     {
-        $police = POLICE_PRIMARY;
         ?>
             <div class="periods">
             <div class="year"><?php echo $year; ?></div>
@@ -109,7 +105,7 @@ trait View
             <div class="clear"></div> 
             <?php foreach ($dates as $m=>$days) : ?>
             <div class="month relative" id="month<?php echo $m ?>">
-                <table>
+                <table id="calendar">
                     <thead>
                         <tr>
                         <?php foreach ($date->days as $d): ?>
@@ -124,7 +120,7 @@ trait View
                                 <?php if ($d == 1 and $w != 1): ?>
                                     <td colspan="<?php echo $w-1; ?>" class="padding"></td>
                                 <?php endif; ?>
-                                <td<?php if($time == strtotime(date('Y-m-d'))): ?> class="today"<?php endif; ?>>
+                                <td <?php if($time == strtotime(date('Y-m-d'))): ?>class="today"<?php endif; ?>>
                                     <div class="relative">
                                         <div class="day"><?php echo $d; ?></div>
                                     </div>

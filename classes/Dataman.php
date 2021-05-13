@@ -8,7 +8,7 @@
 */
 class Dataman extends Time
 {
-    use Style;
+    use Asset;
     use View;
 
     public function ping()
