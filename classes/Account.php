@@ -2,7 +2,7 @@
 /**
 * This PHP class manage account.
 */
-class Account extends Shield
+class Account extends Pact
 {
     /**
     * Login
