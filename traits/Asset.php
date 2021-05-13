@@ -25,7 +25,7 @@ trait Asset
                 #calendar td.padding{  border:none;}
                 #calendar td:hover{  background:#DFDFDF;  cursor:pointer;}
                 #calendar th{  font-weight:normal;  color:#A8A8A8;}
-                #calendar td .day{  position:absolute;  color:#8C8C8C;  bottom:-40px;  right:5px;  font-weight:bold;  font-size:24.3pt;}
+                #calendar td .day{  position:absolute;  color:#8C8C8C;  bottom:-35px;  right:5px;  font-weight:bold;  font-size:24.3pt;}
                 #calendar td .events{  position:relative;  width:79px;  height:0px;  margin:-30px 0px 0px;  padding:0px;}
                 #calendar td .events li{  width:10px;  height:10px;  float:left;  background:#000;  /*+border-radius:10px;*/  -moz-border-radius:10px;  -webkit-border-radius:10px;  -khtml-border-radius:10px;  border-radius:10px 10px 10px 10px;  margin-left:6px; overflow:hidden;  text-indent:-3000px;}
                 #calendar td:hover .events{  position:absolute;  left:582px;  top:66px;  width:442px;  list-style:none;  margin:0px;  padding:11px 0px 0px;}
