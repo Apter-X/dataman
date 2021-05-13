@@ -4,12 +4,13 @@
  */
 class Time extends Query
 {
+    use View;
+
     public $days = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
     public $months = array('Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre');
     
-    function getEvents($year){
-        $this->setFetchMode(PDO::FETCH_OBJ);
-        $events = $this->fetch('SELECT event_id,title,date FROM events WHERE YEAR(date)='.$year);
+    private function getEvents($targets, $year){
+        $events = $this->selectObject($targets, EVENTS_TABLE, YEAR_DATE_KEY, $year);
 
         /*
          *  Ce que je veux $r[TIMESTAMP][id] = title;
@@ -25,7 +26,7 @@ class Time extends Query
      * @param string $year The year of the calendar you want to generate
      * @return array Return Format $r[$y][$m][$d]
      */
-    function getAll($year){
+    private function getAll($year){
         $r = array();
         $date = new DateTime($year.'-01-01');
 
@@ -40,5 +41,14 @@ class Time extends Query
         }
 
         return $r;
+    }
+
+    public function myCalendar($targets, $currentYear)
+    {
+        $dates = $this->getAll($currentYear);
+        $dates = current($dates);
+        $events = $this->getEvents($targets, $currentYear);
+
+        $this->displayCalendar($currentYear, $dates, new Time, $events);
     }
 }
