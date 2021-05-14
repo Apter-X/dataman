@@ -13,8 +13,11 @@ define("DB_NAME", "agendar");
 define("DB_USER", "root");
 define("DB_PASS", "");
 
-/** Account */
+/** PACT/getPact */
 define('USER_ID_KEY', 'user_id');
+/** PACT/ */
+define('PACT_KEY', 'pact');
+
 /** Account/register */
 define('USERS_TABLE', 'users');
 define('USERNAME_KEY', 'username');
