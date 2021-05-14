@@ -1,0 +1,7 @@
+{
+    "name": "erebos/dataman",
+    "description": "Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.",
+    "require": {
+        "php": ">=7.4"
+    }
+}
