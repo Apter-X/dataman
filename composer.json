@@ -3,7 +3,7 @@
     "description": "Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.",
     "keywords": ["data","manager","query","pdo","sql"],
     "homepage": "https://github.com/Apter-X/dataman",
-    "license": "GNU",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Iliass Raihani",
