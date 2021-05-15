@@ -2,7 +2,7 @@
     "name": "erebos/dataman",
     "description": "Dataman is a simple database manager using PDO that simplifies back-end processing and grants with useful tools.",
     "keywords": ["data","manager","query","pdo","sql"],
-    "homepage": "https://github.com/Apter-X/dataman",
+    "homepage": "https://github.com/Apter-X",
     "license": "GPL-3.0+",
     "authors": [
         {
@@ -11,7 +11,11 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {"type": "composer", "url": "https://php.pkg.github.com/$ORG/"}
+    ],
     "require": {
+        "$ORG/package": ">= 1.2.3",
         "php": ">=7.4"
     }
 }
