@@ -5,7 +5,6 @@
 class Database
 {
   private $db;
-  public $rows;
   public $fetchMode;
 
   public function __construct($fetchMode = PDO::FETCH_ASSOC)

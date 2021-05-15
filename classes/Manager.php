@@ -2,7 +2,7 @@
 /**
 * This PHP class construct and execute query.
 */
-Class Query extends Builder 
+Class Manager extends Builder 
 {
     /**
     * Select table

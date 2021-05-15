@@ -10,7 +10,7 @@ trait View
     * @param [type] $var
     * @return void
     */
-    public function debug($var)
+    function debug($var)
     {
         echo '<pre>';
             var_dump($var);
@@ -20,7 +20,7 @@ trait View
     /**
     * Display table
     */
-    public function displayTable($arr, $keyId = 'id', $route = NULL)
+    function displayTable($arr, $keyId = 'id', $route = NULL)
     {
         $i = 0;
         $count = count($arr);
@@ -57,7 +57,7 @@ trait View
     /**
     * Display row
     */
-    public function displayRow($arr, $keyId = 'id', $route = NULL)
+    function displayRow($arr, $keyId = 'id', $route = NULL)
     {
         ?>
             <table id="datatable" style="width: 100%">
@@ -90,7 +90,7 @@ trait View
     /**
     * Display Calendar
     */
-    public function displayCalendar($year, $dates, $date, $events, $route = null)
+    function displayCalendar($year, $dates, $date, $events, $route = null)
     {
         ?>
             <div class="periods">

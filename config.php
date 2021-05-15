@@ -1,12 +1,4 @@
 <?php
-/** traits/classes */
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__.'\dataman\traits\Format.php');
-require_once(__ROOT__.'\dataman\traits\View.php');
-require_once(__ROOT__.'\dataman\traits\Toolbox.php');
-require_once(__ROOT__.'\dataman\traits\Asset.php');
-require_once(__ROOT__.'\dataman\classes\Autoloader.php');
-
 /** Database/__constructor */
 define("DB_HOST", "localhost");
 define("DB_NAME", "agendar");
@@ -37,4 +29,8 @@ define('DANGER_COLOR', '#c93f38');
 /** Asset/dropStyle */
 define('POLICE_PRIMARY', 'Helvetica');
 
-Autoloader::load();
+/** Autoload Dataman */
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__.'\dataman\autoloader.php');
+Autoloader::setFileExt('.php');
+spl_autoload_register('Autoloader::loader');

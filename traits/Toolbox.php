@@ -7,7 +7,7 @@ trait Toolbox
     /**
     * Check if is set and not empty
     */
-    protected function toBe($input)
+    function exist($input)
     {
         return (isset($input) && !empty($input)) ? true : false;
     }

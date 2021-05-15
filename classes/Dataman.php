@@ -10,6 +10,7 @@ class Dataman extends Account
 {
     use Asset;
     use View;
+    use Toolbox;
 
     public function ping()
     {
