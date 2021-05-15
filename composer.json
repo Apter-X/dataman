@@ -11,11 +11,7 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {"type": "composer", "url": "https://php.pkg.github.com/$ORG/"}
-    ],
     "require": {
-        "$ORG/package": ">= 1.2.3",
         "php": ">=7.4"
     }
 }
