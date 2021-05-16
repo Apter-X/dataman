@@ -13,10 +13,8 @@ class Account extends Time
     {
         $user = $this->selectRow(USERS_TABLE, USER_ID_KEY, $id);
         $cookieToken = $this->getSafeCookie('auth');
-
-        var_dump($cookieToken, $user[TOKEN_KEY]);
         
-        if($cookieToken === $user[TOKEN_KEY])
+        if($cookieToken == $user[TOKEN_KEY])
         {
             return true;
         } else {
@@ -58,16 +56,7 @@ class Account extends Time
         // Détruit toutes les variables de session
         $_SESSION = array();
         
-        // Si vous voulez détruire complètement la session, effacez également
-        // le cookie de session.
-        // Note : cela détruira la session et pas seulement les données de session !
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
-            );
-        }
+        $this->destroyCookie('auth');
         
         // Finalement, on détruit la session.
         session_destroy();
