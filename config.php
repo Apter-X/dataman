@@ -5,17 +5,16 @@ define("DB_NAME", "agendar");
 define("DB_USER", "root");
 define("DB_PASS", "");
 
-/** PACT/getPact */
-define('USER_ID_KEY', 'user_id');
-/** PACT/ */
-define('PACT_KEY', 'pact');
-
+/** Account/logIn */
 /** Account/register */
 define('USERS_TABLE', 'users');
 define('USERNAME_KEY', 'username');
-define('EMAIL_KEY', 'email');
-/** Account/login */
+/** Account/logIn */
+define('USER_ID_KEY', 'user_id');
 define('PASSWORD_KEY', 'password');
+define('TOKEN_KEY', 'token');
+/** Account/register */
+define('EMAIL_KEY', 'email');
 
 /** Time/getEvents */
 define('EVENTS_TABLE', 'events');

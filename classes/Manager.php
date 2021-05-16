@@ -13,11 +13,11 @@ Class Manager extends Builder
     {
         if(empty($refKey) && empty($refValue)){
             $sql = <<<EOT
-                SELECT * FROM $table
+            SELECT * FROM $table
             EOT;
         } else {
             $sql = <<<EOT
-                SELECT * FROM $table WHERE $refKey='$refValue';
+            SELECT * FROM $table WHERE $refKey='$refValue';
             EOT;
         }
 
@@ -38,7 +38,7 @@ Class Manager extends Builder
     public function selectValue($target, $table, $refKey, $refValue)
     {
         $sql = <<<EOT
-            SELECT $target FROM $table WHERE $refKey='$refValue';
+        SELECT $target FROM $table WHERE $refKey='$refValue';
         EOT;
 
         $response = $this->fetch($sql);
@@ -59,7 +59,7 @@ Class Manager extends Builder
     public function updateValue($table, $key, $newValue, $refKey, $refValue)
     {
         $sql = <<<EOT
-            UPDATE $table SET $key='$newValue' WHERE $refKey='$refValue';
+        UPDATE $table SET $key='$newValue' WHERE $refKey='$refValue';
         EOT;
 
         $return = $this->execute($sql);
@@ -76,7 +76,7 @@ Class Manager extends Builder
     */
     public function selectRow($table, $refKey, $refValue){
         $sql = <<<EOT
-            SELECT * FROM $table WHERE $refKey='$refValue';
+        SELECT * FROM $table WHERE $refKey='$refValue';
         EOT;
 
         $return = $this->fetch($sql);
@@ -91,15 +91,27 @@ Class Manager extends Builder
     * @param object $values Row values
     * @return PDOStatement Return the PDO statement
     */
-    public function insertRow($table, $targets, $values)
+    public function insertRow($table, $obj)
     {
+        $targets = '';
+        $i = 0;
+
+        foreach ($obj as $key => $value) {
+            
+            if ($i < count($obj) - 1) {
+                $targets .= ':' . $key . ', ';
+            } else {
+                $targets .= ':' . $key;
+            }
+            $i++;
+        }
         $entry = str_replace(':', '', $targets);
 
         $sql = <<<EOT
-            INSERT INTO $table ($entry) VALUES ($targets);
+        INSERT INTO $table ($entry) VALUES ($targets);
         EOT;
 
-        $return = $this->execute($sql, $values);
+        $return = $this->execute($sql, $obj);
         return $return;
     }
 
@@ -112,7 +124,7 @@ Class Manager extends Builder
     */
     public function deleteRow($table, $refKey, $refValue){
         $sql = <<<EOT
-            DELETE FROM $table WHERE $refKey='$refValue';
+        DELETE FROM $table WHERE $refKey='$refValue';
         EOT;
 
         $return = $this->execute($sql);
@@ -132,11 +144,11 @@ Class Manager extends Builder
     {
         if(empty($refKey) && empty($refValue)){
             $sql = <<<EOT
-                SELECT $column FROM $table
+            SELECT $column FROM $table
             EOT;
         } else {
             $sql = <<<EOT
-                SELECT $column FROM $table WHERE $refKey='$refValue';
+            SELECT $column FROM $table WHERE $refKey='$refValue';
             EOT;
         }
 
@@ -158,9 +170,9 @@ Class Manager extends Builder
     public function innerJoin($targets, $table1, $refKey1, $table2, $refKey2)
     {
         $sql = <<<EOT
-            SELECT $targets
-            FROM $table1
-            INNER JOIN $table2 ON $table1.$refKey1 = $table2.$refKey2;
+        SELECT $targets
+        FROM $table1
+        INNER JOIN $table2 ON $table1.$refKey1 = $table2.$refKey2;
         EOT;
         
         $return = $this->fetch($sql);
@@ -179,17 +191,17 @@ Class Manager extends Builder
 
         if(empty($refKey) && empty($refValue)){
             $sql = <<<EOT
-                SELECT $targets FROM $table
+            SELECT $targets FROM $table
             EOT;
         } else {
             $sql = <<<EOT
-                SELECT $targets FROM $table WHERE $refKey='$refValue';
+            SELECT $targets FROM $table WHERE $refKey='$refValue';
             EOT;
         }
 
         $return = $this->fetch($sql);
 
-        // $this->setFetchMode($this->fetchMode);
+        $this->setFetchMode($this->fetchMode);
 
         return $return;
     }

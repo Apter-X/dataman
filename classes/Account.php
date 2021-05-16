@@ -5,8 +5,24 @@
 class Account extends Time
 {
     use Security;
+    use View;
 
-    private $key = $this->genrateToken();
+    private $key = '123';
+
+    function auth($id)
+    {
+        $user = $this->selectRow(USERS_TABLE, USER_ID_KEY, $id);
+        $cookieToken = $this->getSafeCookie('auth');
+
+        var_dump($cookieToken, $user[TOKEN_KEY]);
+        
+        if($cookieToken === $user[TOKEN_KEY])
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
     * Login
@@ -14,15 +30,21 @@ class Account extends Time
     * @param string $password Password
     * @return PDOStatement
     */
-    function logIn($username, $password)
+    function logIn($email, $password)
     {
-        $query_password = $this->db->selectValue(PASSWORD_KEY, USERS_TABLE, USERNAME_KEY, $username);
+        $query_password = $this->selectValue(PASSWORD_KEY, USERS_TABLE, EMAIL_KEY, $email);
 
-        if($this->hmac_verify($query_password))
+        if($this->hmac_verify($query_password, $this->key))
         {
-            return true;
+            $id = $this->selectValue(USER_ID_KEY, USERS_TABLE, EMAIL_KEY, $email);
+            $token = $this->generateToken();
+            
+            $this->updateValue(USERS_TABLE, TOKEN_KEY, $token, USER_ID_KEY, $id);
+            $this->setSafeCookie('auth', $token);
+
+            return $id;
         } else {
-            return false;
+            return 'Email or password are incorrect !';
         }
     }
 
@@ -58,8 +80,8 @@ class Account extends Time
     */
     function registerUser($newUser, $password)
     {
-        $fetch_users = $this->db->selectColumn(USERNAME_KEY, USERS_TABLE);
-        $fetch_emails = $this->db->selectColumn(EMAIL_KEY, USERS_TABLE);
+        $fetch_users = $this->selectColumn(USERNAME_KEY, USERS_TABLE);
+        $fetch_emails = $this->selectColumn(EMAIL_KEY, USERS_TABLE);
 
         $search_user = array_search($newUser[USERNAME_KEY], $fetch_users);
         $search_email = array_search($newUser[EMAIL_KEY], $fetch_emails);
@@ -74,8 +96,10 @@ class Account extends Time
         } 
         else 
         {
-            $newUser->password = $this->hmac_sign($password);
-            $this->db->insertRow('users', ":username, :email, :password", $newUser);
+            $cryptedPwd = $this->hmac_sign($password, $this->key);
+            $newUser += array(PASSWORD_KEY=>$cryptedPwd);
+
+            $this->insertRow(USERS_TABLE, $newUser);
         }
     }
 }

@@ -156,8 +156,6 @@ trait View
     */
     function alert($string, $color = PRIMARY_COLOR)
     {
-        $police = POLICE_PRIMARY;
-
         $message = <<<EOT
             <div class="depop-alert" style="
                 font-family: $police;
