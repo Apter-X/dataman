@@ -201,8 +201,6 @@ Class Manager extends Builder
 
         $return = $this->fetch($sql);
 
-        $this->setFetchMode($this->fetchMode);
-
         return $return;
     }
 }
