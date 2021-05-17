@@ -8,7 +8,7 @@ Dataman is a simple database manager using PDO that simplifies back-end processi
 ## How to use
 
 ```php
-  include_once './dataman/myConfig.php';
+  include_once './dataman/config.php';
   $dataman = new Dataman;
   $dataman->ping();
 ```
