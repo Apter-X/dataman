@@ -6,7 +6,7 @@ trait Format {
     * @param  $date
     * @return date 
     */
-    function formatDate($date)
+    static function formatDate($date)
     {
         $date = date("F j, Y, g:i a", strtotime($date));
         return $date;
@@ -17,7 +17,7 @@ trait Format {
      * @param string $year The year of the calendar you want to generate
      * @return array Return Format $r[$y][$m][$d]
      */
-     private function getCalendar($year){
+    static private function getCalendar($year){
         $r = array();
         $date = new DateTime($year.'-01-01');
 

@@ -4,12 +4,12 @@
  */
 trait Asset
 {
-    function dropStyle()
+    static function dropStyle()
     {
         ?>
             <style>
                 /*[fmt]0020-000A-3*/
-                body{  background:#EEEEEE;  letter-spacing:1px;  font-family:<?= POLICE_PRIMARY ?>; padding:10px;}
+                body{  background:#EEEEEE;  letter-spacing:1px;  font-family:<?= POLICE_PRIMARY ?>;}
                 .year{  color:#D90000;  font-size:70px;}
                 .relative{  position:relative;}
                 .months{}
@@ -48,7 +48,7 @@ trait Asset
         <?php
     }
     
-    function dropCalendarJQuery($jqueryPath = null)
+    static function dropCalendarJQuery($jqueryPath = null)
     {
         if(is_null($jqueryPath))
         {

@@ -10,7 +10,7 @@ trait View
     * @param [type] $var
     * @return void
     */
-    function debug($var)
+    static function debug($var)
     {
         echo '<pre>';
             var_dump($var);
@@ -20,7 +20,7 @@ trait View
     /**
     * Display table
     */
-    function displayTable($arr, $keyId = 'id', $route = NULL)
+    static function displayTable($arr, $keyId = 'id', $route = NULL)
     {
         $i = 0;
         $count = count($arr);
@@ -57,7 +57,7 @@ trait View
     /**
     * Display row
     */
-    function displayRow($arr, $keyId = 'id', $route = NULL)
+    static function displayRow($arr, $keyId = 'id', $route = NULL)
     {
         ?>
             <table id="datatable" style="width: 100%">
@@ -90,7 +90,7 @@ trait View
     /**
     * Display Calendar
     */
-    function displayCalendar($year, $dates, $date, $events, $route = null)
+    static function displayCalendar($year, $dates, $date, $events, $route = null)
     {
         ?>
             <div class="periods">
@@ -154,14 +154,16 @@ trait View
     /**
     * Print warning
     */
-    function alert($string, $color = PRIMARY_COLOR)
+    static function alert($string, $color = PRIMARY_COLOR)
     {
+        $police = POLICE_PRIMARY;
+
         $message = <<<EOT
             <div class="depop-alert" style="
                 font-family: $police;
                 border: 1px solid black; 
                 position: absolute;
-                width: 97%;
+                width: 100%;
                 background-color: $color
             ">
                 <p style="
